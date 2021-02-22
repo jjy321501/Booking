@@ -21,4 +21,11 @@ public class ReviewController {
 		mView.setViewName("rivew/detail");
 		return mView;
 	}
+	
+	//by채영_리뷰 삭제하기 
+	@RequestMapping("/review/private/delete")
+	public String delete(@RequestParam int num) {
+		service.deleteReview(num);
+		return "review/private/delete";
+	}
 }

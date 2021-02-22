@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-	
+		<typeAlias type="com.acorn5.booking.review.dto.ReviewDto" alias="reviewDto"/>
 	</typeAliases>
 	
 	<mappers>

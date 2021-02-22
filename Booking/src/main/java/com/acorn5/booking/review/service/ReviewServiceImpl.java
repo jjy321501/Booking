@@ -12,12 +12,17 @@ public class ReviewServiceImpl implements ReviewService{
 	//by채영_의존객체DI
 	@Autowired
 	private ReviewDao reviewDao;
-
-	@Override
+	
+	@Override //by채영_리뷰 자세히 보기 
 	public void reviewDetail(int num, ModelAndView mView) {
 		//by채영_번호로 리뷰 불러오기
 		ReviewDto dto = reviewDao.getData(num);
 		mView.addObject("dto", dto);
+	}
+
+	@Override //b채영_리뷰 삭제 
+	public void deleteReview(int num) {
+		reviewDao.deleteReview(num);
 	}
 }
 	
