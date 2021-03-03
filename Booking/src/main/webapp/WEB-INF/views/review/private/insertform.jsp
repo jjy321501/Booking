@@ -43,7 +43,9 @@
 			<input class="form-control" type="text" name="reviewTitle" id="reviewTitle"/>
 		</div>
 		<div class="form-group">
-			<label for="content">리뷰 내용</label>
+			<label for="content">리뷰 내용</label></br>
+			<label for="spoiler">스포일러 포함</label>
+			<input type="checkbox"  name="spoiler" valud="spolier" /> <!-- by채영_스포일러 포함 표시  -->
 			<textarea class="form-control" name="content" id="content"></textarea>
 		</div>
 		<button class="btn btn-primary" type="submit" onclick="submitContents(this);">저장</button>
@@ -116,6 +118,10 @@
 		var nFontSize = 24;
 		oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
 	}
+	
+	//by채영_스포일러 체크박스 값 가져오기 
+	var spo = $(test1).is(":checked"); //b채영_boolean type으로 전송 
+	//스포 포함 나중에 리뷰 목록에 띄워야하나?? 그러면 값 받아가지고 처리해야될듯(채영 역할s)
 </script>
 
 </body>
