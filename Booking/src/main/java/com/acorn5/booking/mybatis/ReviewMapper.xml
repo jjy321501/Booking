@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="review">
+<<<<<<< HEAD
 	<update id="addViewCount" parameterType="int">
 		UPDATE board_review
 		SET viewCount=viewCount+1
@@ -62,4 +63,17 @@
 		FROM board_review
 		WHERE num=#{num}
 	</select>
+=======
+	<!--by채영_리뷰 정보 가져오기  -->
+	<select id="getData" parameterType="int" resultType="reviewDto">
+		SELECT num, name, title, author, publisher, content, bookImage
+		FROM reviewList <!-- 남기의 테이블명 확인하기 -->
+		WHERE num = #{num}
+	</select>
+	<!--by채영_리뷰 삭제하기 -->
+	<delete id="deleteReview" parameterType="int">
+		DELETE FROM reviewList <!-- 남기의 테이블명 확인하기  -->
+		WHERE num = #{num}
+	</delete>
+>>>>>>> ef3bf00df3e4e57c0226f53610c7b1d70e107c7c
 </mapper>

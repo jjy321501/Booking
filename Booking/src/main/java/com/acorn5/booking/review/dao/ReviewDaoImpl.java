@@ -1,11 +1,15 @@
 package com.acorn5.booking.review.dao;
 
+<<<<<<< HEAD
 import java.util.List;
 
+=======
+>>>>>>> ef3bf00df3e4e57c0226f53610c7b1d70e107c7c
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+<<<<<<< HEAD
 import com.acorn5.booking.exception.DBFailException;
 import com.acorn5.booking.review.dto.ReviewDto;
 
@@ -69,3 +73,28 @@ public class ReviewDaoImpl implements ReviewDao{
 	}
 
 }
+=======
+import com.acorn5.booking.review.dto.ReviewDto;
+
+@Repository
+public class ReviewDaoImpl implements ReviewDao {
+	@Autowired
+	private SqlSession session;
+
+	@Override
+	public ReviewDto getData(int num) {
+		ReviewDto dto = session.selectOne("review.getData", num);
+		return dto;
+	}
+
+	@Override
+	public void deleteReview(int num) {
+		int count = session.delete("review.delete", num);
+		if(count == 0) {
+			throw new DBFailException("리뷰를 삭제하지 못했습니다.");
+		}
+	}
+	
+	
+}
+>>>>>>> ef3bf00df3e4e57c0226f53610c7b1d70e107c7c

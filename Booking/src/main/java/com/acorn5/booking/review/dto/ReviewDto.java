@@ -1,5 +1,6 @@
 package com.acorn5.booking.review.dto;
 
+<<<<<<< HEAD
 import org.springframework.web.multipart.MultipartFile;
 
 public class ReviewDto {
@@ -32,6 +33,19 @@ public class ReviewDto {
 		this.isbn = isbn;
 		this.image = image;
 	}
+=======
+public class ReviewDto {
+	private int num;
+	private String writer;
+	private String title;
+	private String content;
+	private String date;
+	private String author;
+	private String publisher;
+	private String bookImage;
+	
+	public ReviewDto() {}
+>>>>>>> ef3bf00df3e4e57c0226f53610c7b1d70e107c7c
 
 	public int getNum() {
 		return num;
@@ -49,6 +63,7 @@ public class ReviewDto {
 		this.writer = writer;
 	}
 
+<<<<<<< HEAD
 	public String getImagePath() {
 		return imagePath;
 	}
@@ -63,6 +78,14 @@ public class ReviewDto {
 
 	public void setReviewTitle(String reviewTitle) {
 		this.reviewTitle = reviewTitle;
+=======
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+>>>>>>> ef3bf00df3e4e57c0226f53610c7b1d70e107c7c
 	}
 
 	public String getContent() {
@@ -73,6 +96,7 @@ public class ReviewDto {
 		this.content = content;
 	}
 
+<<<<<<< HEAD
 	public int getViewCount() {
 		return viewCount;
 	}
@@ -125,3 +149,50 @@ public class ReviewDto {
 	
 	
 }
+=======
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+
+	public String getBookImage() {
+		return bookImage;
+	}
+
+	public void setBookImage(String bookImage) {
+		this.bookImage = bookImage;
+	}
+
+	public ReviewDto(int num, String writer, String title, String content, String date, String author, String publisher,
+			String bookImage) {
+		super();
+		this.num = num;
+		this.writer = writer;
+		this.title = title;
+		this.content = content;
+		this.date = date;
+		this.author = author;
+		this.publisher = publisher;
+		this.bookImage = bookImage;
+	}
+}
+>>>>>>> ef3bf00df3e4e57c0226f53610c7b1d70e107c7c

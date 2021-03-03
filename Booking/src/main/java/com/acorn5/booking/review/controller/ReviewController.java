@@ -1,5 +1,6 @@
 package com.acorn5.booking.review.controller;
 
+<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,10 +16,19 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.acorn5.booking.review.dto.ReviewDto;
+=======
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+>>>>>>> ef3bf00df3e4e57c0226f53610c7b1d70e107c7c
 import com.acorn5.booking.review.service.ReviewService;
 
 @Controller
 public class ReviewController {
+<<<<<<< HEAD
 	// by남기._2021224
 	
 	//의존객체 DI 을 필드에 선언해둔다.
@@ -48,3 +58,24 @@ public class ReviewController {
 	}
 	
 }
+=======
+	//의존객체 DI
+	@Autowired
+	private ReviewService service;
+	
+	//by채영_리뷰 자세히 보기
+	@RequestMapping("/review/detail")
+	public ModelAndView detail(@RequestParam int num, ModelAndView mView) {
+		service.reviewDetail(num, mView);
+		mView.setViewName("rivew/detail");
+		return mView;
+	}
+	
+	//by채영_리뷰 삭제하기 
+	@RequestMapping("/review/private/delete")
+	public String delete(@RequestParam int num) {
+		service.deleteReview(num);
+		return "review/private/delete";
+	}
+}
+>>>>>>> ef3bf00df3e4e57c0226f53610c7b1d70e107c7c

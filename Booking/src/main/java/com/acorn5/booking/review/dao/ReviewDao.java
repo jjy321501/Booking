@@ -1,5 +1,6 @@
 package com.acorn5.booking.review.dao;
 
+<<<<<<< HEAD
 import java.util.List;
 
 import com.acorn5.booking.review.dto.ReviewDto;
@@ -18,3 +19,13 @@ public interface ReviewDao {
 	//글 조회수 올리기
 	public void addViewCount(int num);
 }
+=======
+import com.acorn5.booking.review.dto.ReviewDto;
+
+public interface ReviewDao {
+	//by채영_리뷰 정보 얻기
+	public ReviewDto getData(int num);
+	//by채영_리뷰 삭제하기 
+	public void deleteReview(int num);
+}
+>>>>>>> ef3bf00df3e4e57c0226f53610c7b1d70e107c7c
