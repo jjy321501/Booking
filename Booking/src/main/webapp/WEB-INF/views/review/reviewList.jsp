@@ -42,7 +42,7 @@
 						<img style="width:100px; height:60px" class="rounded-sm" 
 						src="${t.imagePath }"/>
 					</td>
-					<td><a href="reviewDetail.do?num=${t.num }">${t.reviewTitle }</a></td>
+					<td><a href="reviewDetail.do?num=${t.num }" onClick="${t.spoCheck eq 'yes' ? 'spoAlert();' : '' }"> ${t.reviewTitle }</a></td>
 					<td>${t.writer }</td>
 					<td>${t.viewCount }</td>
 					<td>${t.regdate }</td>
@@ -111,5 +111,11 @@
 		</div>
 	</c:if>
 </div>
+<script>
+	//by채영_스포일러가 포함된 리뷰 읽을 확인 여부 
+	function spoAlert(){
+		 confirm("스포일러가 포함된 리뷰입니다. /n읽으시겠습니까?");
+	}
+</script>
 </body>
 </html>

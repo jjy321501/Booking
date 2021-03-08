@@ -15,11 +15,12 @@ public class ReviewDto {
 	private int endRowNum; // 마지막 번호
 	private String isbn; // 책 고유번호
 	private MultipartFile image; // 이미지 파일
+	private String spoCheck; //by채영_스포일러 포함 여부 
 	//디폴트 생성자 
 	public ReviewDto() {}
 	
 	public ReviewDto(int num, String writer, String imagePath, String reviewTitle, String content, int viewCount,
-			String regdate, int startRowNum, int endRowNum, String isbn, MultipartFile image) {
+			String regdate, int startRowNum, int endRowNum, String isbn, MultipartFile image, String spoCheck) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -32,6 +33,7 @@ public class ReviewDto {
 		this.endRowNum = endRowNum;
 		this.isbn = isbn;
 		this.image = image;
+		this.spoCheck = spoCheck;
 	}
 
 	public int getNum() {
@@ -120,6 +122,14 @@ public class ReviewDto {
 
 	public void setImage(MultipartFile image) {
 		this.image = image;
+	}
+
+	public String getSpoCheck() {
+		return spoCheck;
+	}
+
+	public void setSpoCheck(String spoCheck) {
+		this.spoCheck = spoCheck;
 	}
 	
 	

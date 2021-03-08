@@ -37,7 +37,10 @@
 			</c:forEach>
 		</div>
 		<div class="form-group">
-			<label for="content">리뷰 내용</label>
+			<label for="content">리뷰 내용</label></br>
+			<!--by채영_스포일러 포함 체크박스  -->
+			<label for="spoCheck">스포일러 포함</label>
+			<input type="checkbox" name="spoCheck"/>
 			<textarea class="form-control" name="content" id="content"></textarea>
 		</div>
 		<button class="btn btn-primary" type="submit" onclick="submitContents(this);">저장</button>
@@ -95,6 +98,15 @@
 		var sDefaultFont = '궁서';
 		var nFontSize = 24;
 		oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
+	}
+	
+	//by채영_스포일러 체크 여부 
+	var spoCheck = null;
+	var spo = $("input:checkbox[name='spoCheck']").is(':checked');
+	if(spo == true){
+		spoCheck = "yes";
+	}else{
+		spoCheck = "no";
 	}
 </script>
 
