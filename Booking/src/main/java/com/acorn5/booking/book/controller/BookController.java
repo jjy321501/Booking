@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.acorn5.booking.book.service.BookService;
 import com.acorn5.booking.pay.service.CartService;
+import com.acorn5.booking.users.dto.UsersDto;
  
 @Controller
 public class BookController {
@@ -81,13 +82,19 @@ public class BookController {
     
     //by남기, reviewBookList.jsp 에 keyword 를 인자로 리스트 검색하는 서비스_210303 
     @RequestMapping("/review/reviewBookList.do")
-    public ModelAndView reviewBookList(@RequestParam(required=false)String keyword, HttpServletRequest request){    
+    public ModelAndView reviewBookList(@RequestParam(required=false)String keyword, 
+    		HttpSession session, HttpServletRequest request){    
         ModelAndView mView = new ModelAndView();
-        cartservice.listCart(mView, request);
+        
         if(keyword !=null)
         {
             mView.addObject("reviewBookList", service.searchBookList(keyword, 8, 1, request, mView));
         }
+        String id = (String) session.getAttribute("id");
+		//by 우석, view page 에서 cartitem 불러오기_210315
+		if(id!=null) {			
+			cartservice.listCart(mView, request);
+		}
         mView.setViewName("review/reviewBookList");
         return mView;
     }
@@ -108,14 +115,15 @@ public class BookController {
     @RequestMapping("/bookList/conditionSearch.do")
     public ModelAndView conditionSearch(@RequestParam(required=false)String keyword,int start,
           HttpServletRequest request, ModelAndView mView){    
-       //by 우석, view page 에서 cartitem 불러오기_210315
-       cartservice.listCart(mView, request); 
+       
        if(keyword !=null) {
     	 //by욱현.검색시 최근검색어 칼럼에 검색키워드를 담기_2021308
           HttpSession session = request.getSession();
           String id = (String) session.getAttribute("id");
           if(id != null) {
          	 service.recentSearchInput(keyword, id);
+         	//by 우석, view page 에서 cartitem 불러오기_210315
+             cartservice.listCart(mView, request); 
           }
           mView.addObject("conditionSearch",service.conditionSearch(keyword, 8, start, request, mView));
        }
