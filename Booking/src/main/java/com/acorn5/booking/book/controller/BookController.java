@@ -46,7 +46,8 @@ public class BookController {
     	}
         if(d_cont !=null)
         {
-            mView.addObject("bestSeller",service.bestSeller(d_cont, 8, start, "count", request, mView));
+            mView.addObject("bestSeller",service.bestSeller(d_cont, 10, start, "count", request, mView));
+            
         }
         mView.setViewName("bookList/bestSeller");
         return mView;

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -79,4 +80,19 @@ public class HomeController {
 		return data;
 	}
 	
+	 @RequestMapping("/home.do")
+	    public ModelAndView bestSeller(@RequestParam(required=false)String d_cont,String sort, HttpServletRequest request, int start, ModelAndView mView){
+	    	String id=(String)request.getSession().getAttribute("id");
+	    	if(id!=null) {
+	    		//by 우석, view page 에서 cartitem 불러오기_210315
+	        	cartservice.listCart(mView, request);
+	    	}
+	        if(d_cont !=null)
+	        {
+	            mView.addObject("bestSeller",service.bestSeller(d_cont, 10, start, "count", request, mView));
+	            
+	        }
+	        mView.setViewName("home");
+	        return mView;
+	    }
 }

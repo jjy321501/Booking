@@ -126,7 +126,10 @@
    		</div>
    		<!-- 베스트 셀러 col-3 Start -->
    		<div class="col-3" style="border:3px solid black">
-   		
+   			<c:forEach var="b" items="${bestSeller}">
+				<h6>${b.title }</h6>
+
+			</c:forEach>
    		</div>
    		<!-- 베스트 셀러 END -->
    </div>
@@ -346,6 +349,65 @@
        }, 500);
    
    }
+   
+	
+/* 	$(document).ready(function () {
+	 	var top10Arr = new Array();
+		<c:forEach items="${bestSeller}" var="b" begin="0" end="9">
+		top10Arr.push("${b.title}");
+		</c:forEach>
+	    var top10 = {"top10" : top10Arr}
+	    $.ajax({
+	        //속성을 설정할 수 있다
+	        url:"${pageContext.request.contextPath }/bookList/bestSeller.do",
+	        type:"POST", // get or post 방식
+	        data: top10,
+	          success: function (data) {
+	        	 
+	               console.log("succee");
+	          }
+	    });
+	}); */
+	
+/* 	$(documnet).ready(function (){
+		 $.ajax({
+             url:"${pageContext.request.contextPath }/bookList/bestSeller.do",
+             method:"GET",
+             success : function(data) {
+            	    $("#bestSeller").html(data);
+            	}
+       });
+	}); 
+	 */
+/* 	$(document).ready(function(){
+		$('#bestSeller').load('bestSeller.jsp');
+		}); */
+	
+	/* $(document).ready(function(){ 
+		var formData = new FormData(); //formData 객체 생성 
+		formData.append("tab", tab);
+		$.ajax({
+			url : "${pageContext.request.contextPath }/bookList/bestSeller.do", 
+			type : "post", 
+			dataType : "text", 
+			data : formData,
+			}).done(function(result) { 
+					console.log("결과확인");
+					var html = jQuery('<div>').html(result);
+					var contents = html.find("div#bestSeller").html();
+					if(tab == "ing"){
+						$("#bestSeller").html(contents); 
+					}
+				}).fail(function (jqXHR, textStatus, errorThrown) {
+					console.log("에러");
+					console.log(jqXHR);
+					console.log(textStatus);
+					console.log(errorThrown); 
+					}); 
+	});
+
+	 */
+
 </script>
 </body>
 </html>
