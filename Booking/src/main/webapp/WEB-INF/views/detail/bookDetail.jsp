@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset=UTF-8">
 <title>책과의 즉석만남 Booking</title>
 <jsp:include page="../include/resource.jsp"></jsp:include>
 <style>
@@ -20,17 +20,21 @@
 	 *  Core Owl Carousel CSS File
 	 */
 	.owl-item > div {
+	  width:140px;
 	  height:fit-content;
 	  cursor: pointer;
-	  margin: 6% 8%;
+	  margin: auto;
+	  padding-top: 20px;
 	  transition: margin 0.4s ease;
 	  pointer-events: auto !important;
 	}
 	.owl-item.center > div {
+	  width:180px;
 	  cursor: auto;
-	  margin: 0;
-	  z-index:1000;
-	  diplay:block;
+	  margin: auto;
+	  padding: 0;
+	  z-index:800;
+	  display:block;
 	}
 	.owl-item:not(.center) > div:hover {
 	  opacity: .75; 
@@ -38,6 +42,14 @@
 	.owl-nav{
 		display:none;
 	}
+	div.item.active{
+		
+	}
+	.Link{
+		
+	
+	}
+	
 	/*
 		Table CSS
 	*/
@@ -52,8 +64,23 @@
 		object-fit;
 		text-align:center;
 	}
+	#search{
+		display:none;
+	}
+	.alert{
+		display:none;
+	}
+	#writeR{
+		display:none;
+	}
+	#reviewList h1{
+		display:none;
+	}
+	#simList{
+		padding:50px 100px 0 100px;
+	}
+	
 </style>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" />
 </head>
@@ -61,7 +88,7 @@
 <jsp:include page="../include/navbar.jsp">
 	<jsp:param value="BS" name="thisPage"/>
 </jsp:include>
-<div style="margin:auto; width:70%;" id="bookDetail">
+<div style="margin:auto; width:1050px;" id="bookDetail">
 <div style="border:3px solid #0f4c81; margin-top:30px">
     <table style="margin:30px 20px">
     	<c:forEach var="b" items="${bookDetail }">
@@ -100,28 +127,35 @@
            </tr>
            		
            <tr>
-           </tr>
-           <tr>
            	<td style="background:#f5e9dd;" rowspan="4"width="60%">
 				<div style="PAGE_ROW_COUNT:inline-block; margin:20px 20px">
            			${b.description}
 				</div>
            	</td>
+           		<td style="text-align:center">
+				    <button class="btn btn-outline-light" style="width:70%; border: 1px solid #135fa1; color:#135fa1">
+				   	<span style="margin-right:10px">
+					    수량 
+				   	</span>
+					    <input id="countP" type="number" name="count" class="numBox" min="1" max="100" value="1" style="height:100%"/>
+				    </button>
+           		
+           		</td>
+           </tr>
+           <tr>
            	<td style="text-align:center" width="20%">
     	       	<input id="idP" type="hidden" name="id" value="${id }"/>
 			    <input id="imageP" type="hidden" name="image" value="${b.image }"/>
 			    <input id="titleP" type="hidden" name="title" value="${b.title }" />
 			    <input id="priceP" type="hidden" name="price" value="${b.price }"/>
 			    <input id="d_priceP" type="hidden" name="d_price" value="${b.discount }"/>
-			    개수 &nbsp;&nbsp;&nbsp;&nbsp;
-			    <input id="countP" type="number" name="count" class="numBox" min="1" max="100" value="1"/>
-			    <br />
+			    <input type="text" id="isbnP" name="isbn" value="${b.isbn }" hidden/>
 		    		<button style="width:70%; border: 1px solid #135fa1; color:#135fa1" class="btn btn-outline-light" id="insertBtn" type="button" onclick="insert()">장바구니</button>
            	</td>
            </tr>
            <tr>
            	<td style="text-align:center">
-		           		<button style="width:70%; border: 1px solid #135fa1; color:#135fa1" class="btn btn-outline-light">바로구매  </button>
+		           		<button style="width:70%; border: 1px solid #135fa1; color:#135fa1" class="btn btn-outline-light" onclick="direct()">바로구매  </button>
            	</td>
            </tr>
            <tr>
@@ -133,7 +167,7 @@
 		</c:forEach>	
     </tbody>
 	</table>
-	<script>
+<script>
 	//by준영, 장바구니 로그인 필터 기능_210311
 	//by준영, 장바구니로 페이지이동없이 담고 바로 이동할지 묻는 컨펌 로직_210315
 	var id=$("#idP").val();
@@ -144,13 +178,14 @@
 		var price = $("#priceP").val();
 		var d_price = $("#d_priceP").val();
 		var count = $("#countP").val();
+		var isbn=$("#isbnP").val();
 		
 		var url ="${pageContext.request.contextPath }/pay/insert.do";
 		var data = null;
 		if(d_price == ""){
-			data={'id' : id ,'image' : image ,'title' : title ,'price' : price ,'d_price' : price ,'count' : count };
+			data={'id' : id ,'image' : image ,'title' : title ,'price' : price ,'d_price' : price ,'count' : count, 'isbn' : isbn };
 		}else if(d_price != ""){
-			data={'id' : id ,'image' : image ,'title' : title ,'price' : price ,'d_price' : d_price ,'count' : count };
+			data={'id' : id ,'image' : image ,'title' : title ,'price' : price ,'d_price' : d_price ,'count' : count, 'isbn' : isbn };
 		}
 		console.log(data);
 		if(id == ""){
@@ -172,14 +207,42 @@
 			})
 		}	
 	}
+	
+	function direct(){
+		var image = $("#imageP").val();
+		var title = $("#titleP").val();
+		var price = $("#priceP").val();
+		var d_price = $("#d_priceP").val();
+		var count = $("#countP").val();
+		var isbn=$("#isbnP").val();
+		
+		var url ="${pageContext.request.contextPath }/pay/insert.do";
+		var data = null;
+		if(d_price == ""){
+			data={'id' : id ,'image' : image ,'title' : title ,'price' : price ,'d_price' : price ,'count' : count, 'isbn' : isbn };
+		}else if(d_price != ""){
+			data={'id' : id ,'image' : image ,'title' : title ,'price' : price ,'d_price' : d_price ,'count' : count, 'isbn' : isbn };
+		}
+		console.log(data);
+		if(id == ""){
+			alert("로그인이 필요합니다");	
+			location.href="${pageContext.request.contextPath }/users/login_form.do";
+		}else{
+			$.ajax({
+				url:url,
+				method:'post',
+				data: data,
+				success:function(data){
+					location.replace("${pageContext.request.contextPath }/pay/pay.do");
+				}
+			})
+		}	
+	}
 </script>	
 </div>
 	<div style="margin-top:30px" id="simList"></div>
 </div>
 <div style="margin-top:180px;"  id="reviewList"></div>
-<div style="margin-top:200px">
-	<jsp:include page="../include/footer.jsp"></jsp:include>
-</div>
 <script type="text/javascript">
 //by 준영, 이 저자의 책들을 불러오는 ajax 호출 함수_210222
 var inputAuth=$("#auth").text();
@@ -235,25 +298,29 @@ function bookAuthor(){
 	});
 	
 	$owl.owlCarousel({
-	  center: true,
-	  loop: true,
-	  
-      touchDrag: true,
-	  responsiveClass: true,
-	  responsive:{
-		  0:{
-	            items:1,
-	            nav:true
-	        },
-	        600:{
-	            items:3,
-	            nav:false
-	        },
-	        1000:{
-	            items:5,
-	            nav:true,
-	            loop:false
-	  }
+		navigation:true,
+		center: true,
+		loop: true,
+		mouseDrag:true,
+		mouseDraggable:true,
+		touchDrag: true,
+		autoplay: true,
+		autoplayTimeout: 2500,
+		rewind:true,
+		responsive:{
+		0:{
+		    items:1,
+		    nav:true
+		},
+		600:{
+		    items:3,
+		    nav:false
+		},
+		1000:{
+		    items:5,
+		    nav:true,
+		    loop:false
+	  	}
 	  }
 	});
 	
