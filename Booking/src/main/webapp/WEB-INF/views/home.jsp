@@ -90,6 +90,11 @@
 		border-bottom:2px solid #989c9b; 
 		width:700px
 	}
+	#booking{
+		padding-right:40px;
+		width:auto; 
+		margin-bottom:10px;
+	}
 </style>
 </head>
 <body style="background-color:#white;">
@@ -113,9 +118,14 @@
    
    <div class="row justify-content-center" style="margin-top:30px;">
    <!-- 부킹  col-9 Start -->
-   		<div class="border-layout">
-			<div class="booking col justify-content-center" style="width:auto; margin-bottom:10px;"><!-- by욱현.올랜덤 책추천 '부킹'기능_2021225 -->
-               <center style="margin-top:30px"><h2><strong>나와 매칭되는 책은?</strong></h2></center>
+   		<div>
+			<div id="booking" class="booking col justify-content-center"><!-- by욱현.올랜덤 책추천 '부킹'기능_2021225 -->
+               <center style="margin-top:30px">
+              	 <h2><strong>이 책은 어떠세요?</strong></h2>
+              	 <br />
+              	 <h5>지금 책 매칭하기</h5>
+               </center>
+               
                <div class="row justify-content-center align-items-center" style="margin-top:60px">
                   <span class="col-4" style="text-align: right;" >
                      <c:choose>
@@ -131,10 +141,10 @@
                   </c:choose>
                </span>
                <span class="col-4" style="text-align: center;"><!--by욱현. 부킹버튼(랜덤추천기능)_2021226 -->
-                  <a id="bookingBtn" href="javascript:"><img style="margin-left:0px; width:150px; height:150px;" src="resources/images/BookingButton.png"/></a> 
+                  <a id="bookingBtn" href="javascript:"><img style="margin-left:0px; width:150px; height:150px;" src="resources/images/jackpot.png"/></a> 
                  </span>
                  <span class="col-4" style="text-align: left; margin-left:0px;">   
-                    <a id="bookA"><img style="height:200px; width:200px;" class="card-img-top" id="bookimage" src="resources/images/BookingBox.png"/></a>
+                    <a id="bookA"><img style="height:200px; width:200px;" class="card-img-top" id="bookimage" src="resources/images/book.png"/></a>
                  </span>
                </div>
             </div><!-- 부킹 ENd -->
@@ -150,10 +160,10 @@
       <div class="col justify-content-center"><!-- by 준익, 메인 페이지 div_2021.02.28 -->
          <c:choose>
             <c:when test="${not empty sessionScope.id }">
-                <center><h2><strong>${sessionScope.id }</strong>님을 위한 추천도서</h2></center>
+                <center><h2>취향 저격 도서</h2></center>
             </c:when>
             <c:otherwise>
-                <center ><h2><strong>추천도서</strong></h2></center>
+                <center ><h2><strong>추천 도서</strong></h2></center>
             </c:otherwise>
          </c:choose>
          <!-- 캐러셀 Start -->

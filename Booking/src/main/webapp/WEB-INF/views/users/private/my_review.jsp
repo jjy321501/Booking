@@ -7,24 +7,40 @@
 <meta charset="UTF-8">
 <title>책과의 즉석만남 Booking</title>
 <jsp:include page="../../include/resource.jsp"></jsp:include>
+<style>
+	/* 프로필 이미지를 작은 원형으로 만든다 */
+	#profileImage{
+		width: 50px;
+		height: 50px;
+		border: 1px solid #cecece;
+		border-radius: 50%;
+		margin-left: 7px;
+		margin-top: 7px;
+		margin-bottom: 7px;
+	}
+	/* 프로필 업로드 폼을 화면에 안보이게 숨긴다 */
+	#profileForm{
+		display: none;
+	}
+</style>
 </head>
-<body style="background-color:#484848;">
+<body style="background-color:#b7b7b7;">
 <jsp:include page="../../include/navbar.jsp"></jsp:include>
 <div style="margin-top:30px"></div>
 <div class="row" style="width:1050px; 
-	margin:auto; background-color:#f5e9dd;">
+	margin:auto; background-color:#f8f9fa">
 	<jsp:include page="../../include/sideusers.jsp"></jsp:include>
 	<div style="margin-left:8px; margin-top:7px;">
-	<h1 style="margin-left:8px; margin-top:7px;">내가 쓴 리뷰</h1>
+	<h1 style="margin-left:8px; margin-top:7px;">My Review</h1>
 	<table class="table table-striped" style="width:830px">
 		<thead class="thead-dark"> 
 			<tr>
-				<th>리뷰 이미지</th>
-				<th>리뷰 제목</th>
-				<th>작성자</th>
-				<th>조회수</th>
-				<th>등록일</th>
-				<th>리뷰 별점</th>
+				<th style=width:15%;>리뷰 이미지</th>
+				<th style=width:35%;>리뷰 제목</th>
+				<th style=width:10%;>작성자</th>
+				<th style=width:10%;>조회수</th>
+				<th style=width:15%;>등록일</th>
+				<th style=width:15%;>리뷰 별점</th>
 			</tr>
 		</thead>
 		<tbody>

@@ -7,12 +7,28 @@
 <meta charset="UTF-8">
 <title>책과의 즉석만남 Booking</title>
 <jsp:include page="../../include/resource.jsp"></jsp:include>
+<style>
+	/* 프로필 이미지를 작은 원형으로 만든다 */
+	#profileImage{
+		width: 50px;
+		height: 50px;
+		border: 1px solid #cecece;
+		border-radius: 50%;
+		margin-left: 7px;
+		margin-top: 7px;
+		margin-bottom: 7px;
+	}
+	/* 프로필 업로드 폼을 화면에 안보이게 숨긴다 */
+	#profileForm{
+		display: none;
+	}
+</style>
 </head>
-<body style="background-color:#484848;">
+<body style="background-color:#b7b7b7;">
 <jsp:include page="../../include/navbar.jsp"></jsp:include>
 <div style="margin-top:30px"></div>
 <div class="row" style="width:1050px; height:650px;
-	margin:auto; background-color:#f5e9dd;">
+	margin:auto; background-color:#f8f9fa;">
 	<jsp:include page="../../include/sideusers.jsp"></jsp:include>
 	<div>
 		<h1 style="margin-left:8px; margin-top:7px;">비밀번호 수정 폼</h1>

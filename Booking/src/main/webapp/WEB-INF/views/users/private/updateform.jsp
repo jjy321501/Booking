@@ -24,11 +24,11 @@
 	}
 </style>
 </head>
-<body style="background-color:#484848;">
+<body style="background-color:#b7b7b7;">
 <jsp:include page="../../include/navbar.jsp"></jsp:include>
 <div style="margin-top:30px"></div>
 <div class="row" style="width:1050px; height:650px;
-	margin:auto; background-color:#f5e9dd;">
+	margin:auto; background-color:#f8f9fa;">
 	<jsp:include page="../../include/sideusers.jsp"></jsp:include>
 	<div>
 		<h1 style="margin-left:8px; margin-top:7px;">가입정보 수정 폼</h1>

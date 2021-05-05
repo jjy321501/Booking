@@ -83,6 +83,9 @@
 		text-overflow: ellipsis;
 		white-space: nowrap;
 	}  
+	.numbox{
+		width:40px;
+	}
 </style>
 <meta charset=UTF-8">
 <title>책과의 즉석만남 Booking</title>
@@ -139,7 +142,7 @@
 	    <tr>
 	      <th>
 		  	<span class="allCheck">
-				<input type="checkbox" name="allCheck" id="allCheck" /><label for="allCheck"></label> 
+				<input type="checkbox" name="allCheck" id="allCheck"/><label for="allCheck"></label> 
 			</span>
 			<script>
 			//by준영, 체크박스 전체선택,전체해제 기능_210307

@@ -9,9 +9,14 @@
     	
    	}
    	
-   	ul li {
-   		align:center;
+    .banner{
+   		text-align:left;
+   		color:#f5e9dd;
+   		margin-left:10px;
  
+   	}
+   	.profile{
+   		text-align:center;
    	}
   	
   	.boss{
@@ -19,7 +24,6 @@
   		width:200px; 
   		height:row; 
   		background-color:#0f4c81; 
-  		text-align:center;
   		border-color:#f5e9dd;
   	}
   	
@@ -29,12 +33,13 @@
 		border: 1px solid #cecece;
 		border-radius: 50%;
 		margin-top:10px;
+		text-align:center;
 	}
 </style>
 <div class="boss" >
-	<h2 style="margin-top:15px;  color: #f5e9dd;">나의 계정</h2>		
+	<h2 class="profile" style="margin-top:15px;  color: #f5e9dd;">회원 정보</h2>		
 	<ul>
-		<li>
+		<li class="profile">
 			<c:choose>
 				<c:when test="${empty dto.profile }">
 					<svg id="profileImage" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
@@ -47,29 +52,29 @@
 				</c:otherwise>
 			</c:choose>	
 		</li>
-		<li>
-			<a href="${pageContext.request.contextPath }/users/private/info.do" style="font-size:22px;font-weight:bold; color:white;">${id }</a>
+		<li class="profile">
+			<a href="${pageContext.request.contextPath }/users/private/info.do" style="font-size:22px;  font-weight:bold; color:white;">${id }</a>
 		</li>
-		<li style="margin-top: 10px; margin-left:10px; text-align:left; color:#000000">
+		<li style="margin-top: 10px; margin-left:10px; text-align:left; color:#f5e9dd; font-size:21px; ">
 			<a>[활동내역]</a>
 		</li>
 		<li style="margin-top: 15px;">
-			<a href="my_review.do" style="color:#f5e9dd;">내가 쓴 리뷰 모아보기</a>
+			<a class="banner" href="my_review.do" >내가 쓴 리뷰 모아보기</a>
 		</li>
 		<li style="margin-top: 15px;">
-			<a href="my_order.do" style="color:#f5e9dd;">주문 조회하기</a>
+			<a class="banner" href="my_order.do" >주문 조회하기</a>
 		</li>
-		<li style="margin-top: 30px; margin-left:10px; text-align:left; color:#000000">
+		<li style="margin-top: 30px; margin-left:10px; text-align:left; color:#f5e9dd; font-size:21px;" >
 			<a>[회원정보관리]</a>
 		</li>
 		<li style="margin-top: 15px;">
-			<a style="color:#f5e9dd;" href="pwd_updateform.do">비밀번호 수정하기</a>
+			<a class="banner" href="pwd_updateform.do">비밀번호 수정하기</a>
 		</li>
 		<li style="margin-top: 15px;">
-			<a style="color:#f5e9dd;" href="updateform.do">개인정보 수정하기</a>
+			<a class="banner" href="updateform.do">개인정보 수정하기</a>
 		</li>
 		<li style="margin-top: 15px;">
-			<a style="color:#f5e9dd;" href="javascript:deleteConfirm();">회원탈퇴</a>
+			<a class="banner" href="javascript:deleteConfirm();">회원탈퇴</a>
 		</li>
 	</ul>
 </div>

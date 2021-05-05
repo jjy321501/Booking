@@ -61,7 +61,7 @@
 <jsp:include page="../include/navbar.jsp"></jsp:include>
 <div style="width:1050px; height:800px; margin:auto;">
 	<div style="margin-top:30px">
-		<center><h1><strong>서점 검색 폼</strong></h1></center>
+		<center><h1><strong>Book Store</strong></h1></center>
 		<!-- by남기, 카카오맵 api 사용/지도와 검색 뷰를 따로 구분_210306 -->
 		<div style="margin-top:30px">
 			<div class="map_wrap">

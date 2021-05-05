@@ -73,7 +73,7 @@
 	#writeR{
 		display:none;
 	}
-	#reviewList h1{
+	.h1{
 		display:none;
 	}
 	#simList{
