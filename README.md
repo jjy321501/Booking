@@ -6,7 +6,10 @@
 
 # 사용 기술 
 - Back-End:
-> Java > Spring > Mybatis > Oracle DB
+-Java  
+-Spring  
+-Mybatis  
+-Oracle DB
 - Html, CSS, Javascript, JQuery, Ajax, BootStrap
 - Apache Tomcat
  
